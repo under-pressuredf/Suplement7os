@@ -150,7 +150,10 @@
         .card:hover {
             transform: scale(1.05);
             box-shadow: 0 8px 12px rgba(11, 43, 171, 0.2);
+            
         }
+
+        
 
         .card img {
             max-width: 100%;
@@ -195,7 +198,9 @@
         color: black;
         }
 
-      
+
+
+        
        @media (max-width: 768px) {
      
         .scroll-image{
@@ -239,9 +244,50 @@
             transform: skewX(-15deg);
             box-shadow: -3px 3px 0px rgb(255, 255, 255);
         }
+        
 
                 
         }
+
+
+/*sotkc 0*/
+.stock0 {
+    position: relative;
+    overflow: hidden;
+}
+
+
+.card-content {
+    position: relative;
+    z-index: 1; 
+}
+
+
+.stock0::before {
+    content: "";
+    position: absolute;
+    width: 520px;
+    height: 2px; 
+    background-color: red; 
+    top: 0;
+    left: 0;
+    transform-origin: left top;
+    transform: scaleX(0) rotate(45deg); 
+    z-index: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+
+.stock0:hover::before {
+    transform: scaleX(1) rotate(59deg); 
+    opacity: 1;  }
+
+
+
+
+
+
+
 
 
 
@@ -303,7 +349,7 @@
                 <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
                 <h4> BODY ADVANCE - Whey Protein 1Kg(vainilla, frutilla)</h4>
                 <img src="imagenes/body6.jpg" alt="Suplemento 1">
-                <p>Precio: $6,390</p>
+                <p>Precio: $6,390/p>
             </a>
             </div>
 
@@ -356,7 +402,7 @@
             </div>
             <div class="card">
                 <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
-                <h4>CAJA Iron Bar Chocolate (20u X 46g)(chocolate,banana,frutilla,menta,Limon)</h4>
+                    <h4>CAJA Iron Bar Chocolate(20u X 46g)(chocolate,frutilla,limon,Banana)</h4>
                 <img src="imagenes/barritas.jpg"alt="Suplemento 1">
                 <p>Precio:$7,118</p>
             </a>
@@ -454,29 +500,50 @@
 
             <div class="card">
                 <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
-                <h4>Beast Blood 280Gr (Tutti Frutti, Uva)</h4>
+                <h4>Beast Blood 280G (Tutti Frutti, Uva)</h4>
                 <img src="imagenes/preworrkbody.jpg" alt="Suplemento 1">
                 <p>Precio: $6,816.18</p>
             </a>
             </div>
 
             <div class="card">
+                <a href="URL_DEL_SITIO_AL_QUE_DESEA_REDIRECCIONAR" target="_blank" rel="noopener noreferrer">
+                <h4>pre entreno tnt dynamite 240G (blue razz, citrus sulsh,uva)</h4>
+                <img src="imagenes/tntpre.jpg" alt="Suplemento 1">
+                <p>Precio: 6,623</p>
+            </a>
+            </div>
+
+            <div class="card stock0">
                 <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
-                <h4>Pre Workout Energy 907 g</h4>
+                <h4>Pump V8 285G (limon, sandia, uva,ciurela)</h4>
+                <img src="imagenes/v8.jpg" alt="Suplemento 1">
+                <p>Precio: $$8,827</p>
+            </a>
+            </div>
+            <div class="card">
+                <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+                <h4>Hoch sport - Flash 5D 320G</h4>
+                <img src="imagenes/prre hoch.jpg" alt="Suplemento 1">
+                <p>Precio: $9,877</p>
+            </a>
+            </div>
+
+          
+
+            <div class="card ">
+                <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+                <h4>Pre Workout Energy 907G</h4>
                 <img src="imagenes/preworrkmervi.jpg" alt="Suplemento 1">
                 <p>Precio: $13,266.24</p>
             </a>
             </div>
-
-           <!--   <div class="card">
-                <a href="URL_DEL_SITIO_AL_QUE_DESEA_REDIRECCIONAR" target="_blank" rel="noopener noreferrer">
-                <h4>proteinna star nutritio 2lb (chocolate)</h4>
-                <img src="imagenes/cfor.jpg" alt="Suplemento 1">
-                <p>Precio: $12.000</p>-->
-            </a>
-            </div>
-
-            <!-- Las otras cards de pre-entreno -->
+           
+        
+ 
+            
+           
+            <!-- fother -->
         </div>
     </div>
     <a class="contacto" href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
