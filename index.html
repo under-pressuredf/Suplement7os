@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es-LA"></html>
+<html>
+<head>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #ffffff, rgb(26, 135, 202));
+        }
+
+        nav {
+            background-color: #000000;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+           
+        }
+
+        nav img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.638);
+        }
+
+        nav h1 {
+
+            font-family: "Arial", sans-serif;
+            font-size: 24px;
+            width: 160px;
+            padding: 20px;
+          
+            color: white;
+            /* Transformación inclinada */
+            transform: skewX(-25deg);
+            transition: transform 0.4s ease-in-out;
+        
+            box-shadow: 3px 3px 0px rgb(26, 135, 202);
+           
+        }
+        nav h1:hover {
+            /* Restablece la inclinación a 0 grados al pasar el mouse */
+            transform: skewX(-15deg);
+            box-shadow: -3px 3px 0px rgb(255, 255, 255);
+        }
+
+        .catalog-title {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .category-title {
+            text-align: center;
+            font-size: 28px;
+            margin-top: 40px;
+            text-transform: uppercase;
+            color: #333;
+        }
+
+        .logo {
+            text-align: center; /* Centra el contenido del div */
+            margin-top: 20px; /* Espacio superior para separar del título */
+          
+          
+         
+        }
+
+        .logo img {
+            width: 100px; /* Ajusta el ancho del logotipo según tus preferencias */
+            height: auto; /* Mantiene la proporción de aspecto */
+            border-radius: 24px;
+            
+            
+        }
+        .logo img:hover{
+            border: 4px solid #0a41e66e;
+        }
+
+        .scroll-image {
+         display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 80px;
+            height: 80px;
+            border-radius: 24px;
+            margin: 0;
+            z-index: 1;
+            transition: opacity 0.3s; /* Agregamos una transición para que aparezca suavemente */
+            box-shadow: 0px 0px 20px rgba(83, 79, 79, 0.638);
+        }
+
+        /* Estilo para mostrar la imagen al hacer scroll */
+        .show-image .scroll-image {
+            display: block;
+            opacity: 1; /* Establecemos la opacidad a 1 para mostrar la imagen */
+        }
+
+        /* Agregamos una regla de clase al cuerpo para mostrar la imagen al hacer scroll */
+        body.show-image {
+            padding-top: 80px; /* Añadimos espacio en la parte superior para evitar solapamientos */
+        }
+
+        /* Simula el espacio que ocupará la imagen para evitar saltos en la página */
+        .content {
+            height: 2000px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .category-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            width: 250px;
+            height: 420px; /* Aumenté la altura de la card */
+            margin: 20px;
+            border: 1px solid #0a41e6;
+            padding: 10px;
+            text-align: center;
+            transition: transform 0.2s ease-in-out;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(1, 2, 2, 0.612);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+          
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(11, 43, 171, 0.2);
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+            flex: 1; /* Permite que la imagen se expanda en la card */
+        }
+
+        .card p {
+            margin-bottom: 10px; /* Espacio para el precio */
+        }
+
+        .footer {
+            background-color: #0c0909;
+            height: 35px;
+            text-align: center;
+            padding: 10px 0;
+            color: white;
+            text-align: center;
+         
+            bottom: 0;
+            width: 100%;
+
+            display: flex; /* Utiliza flexbox para centrar y alinear los párrafos */
+            justify-content: center; /* Centra horizontalmente */
+            gap: 20px; /* Espacio simétrico entre los párrafos */
+         
+        }
+
+
+        h3 {
+            margin-top: 20px;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 18px;
+            margin-top: -9px;
+        }
+        a{
+        text-decoration: none;
+        color: black;
+        }
+
+      
+       @media (max-width: 768px) {
+     
+        .scroll-image{
+                display: none; }
+                .show-image .scroll-image{display: none;}
+                .show-image .scroll-image{display: none;}
+
+                nav {
+            background-color: #000000;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            position: fixed; /* Fija el header */
+            top: 0; /* Lo coloca en la parte superior */
+            left: 0;
+            right: 0;
+            z-index: 999; /* Asegura que esté sobre otros elementos */
+        }
+
+        nav img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.638);
+        }
+
+        nav h1 {
+            font-family: "Arial", sans-serif;
+            font-size: 24px;
+            width: 160px;
+            padding: 20px;
+            color: white;
+            transform: skewX(-25deg);
+            transition: transform 0.4s ease-in-out;
+            box-shadow: 3px 3px 0px rgb(26, 135, 202);
+        }
+
+        nav h1:hover {
+            transform: skewX(-15deg);
+            box-shadow: -3px 3px 0px rgb(255, 255, 255);
+        }
+
+                
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="imagenes/logo-modified.png" alt="Logo">
+        <h1>Suplement7os</h1>
+    </nav>
+
+
+
+    <img class="scroll-image" src="imagenes/logo-modified.png" alt="Imagen al hacer scroll">
+    <script>
+        // JavaScript para agregar y quitar la clase que muestra la imagen al hacer scroll
+        window.addEventListener('scroll', function() {
+            var image = document.querySelector('.scroll-image');
+            var body = document.querySelector('body');
+            if (window.scrollY > 200) { // Cambia el valor 200 según cuándo quieres que aparezca la imagen
+                body.classList.add('show-image');
+            } else {
+                body.classList.remove('show-image');
+            }
+        });
+    </script>
+
+
+
+    <div class="catalog-title">
+        <h2>Catálogo de Suplementos</h2>
+    </div>
+    <div class="logo">
+        <img src="imagenes/logo-modified.png" alt="Logo de la empresa">
+    </div>
+    <div class="content">
+        <div class="category-title">
+            <!-- Las otras cards de prote -->
+            <h3>Proteína</h3>
+        </div>
+        <div class="category-container">
+            <div class="card">
+                <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+                <h4>Whey Protein 2lb DOY PACK (banana,vainilla)</h4>
+                <img src="imagenes/proteina.jpg" alt="Suplemento 1">
+                <p>Precio:$10,000</p>
+            </a>
+            </div>
+
+            <div class="card">
+                <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+                <h4>Whey Protein 7900 500g (chocolate,frutilla,vainilla,Banana)</h4>
+                <img src="imagenes/gentech.jpg" alt="Suplemento 1">
+                <p>Precio:$5,819</p>
+            </a>
+            </div>
+
+            <div class="card">
+                <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+                <h4> BODY ADVANCE - Whey Protein 1Kg(vainilla, frutilla)</h4>
+                <img src="imagenes/body6.jpg" alt="Suplemento 1">
+                <p>Precio: $6,390/p>
+            </a>
+            </div>
+
+            <div class="card">
+                <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+                <h4> Ena 100 % Whey 1kg(Chocolate,vainilla)</h4>
+                <img src="imagenes/ena.png" alt="Suplemento 1">
+                <p>Precio: $9,885</p>
+            </a>
+            </div>
+
+            <div class="card">
+                <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+                <h4>Whey Mervick 1Kg (chocolate,vainilla, frutilla)</h4>
+                <img src="imagenes/mervick.png"alt="Suplemento 1">
+                <p>Precio: $9,770</p>
+            </a>
+            </div>
+            
+            <div class="card">
+                <a href="URL_DEL_SITIO_AL_QUE_DESEA_REDIRECCIONAR" target="_blank" rel="noopener noreferrer">
+                <h4>HOCH SPORT Whey Protein 1Kg (chocolate,dulce de leche,frutos rojos,mango citric,vainilla)</h4>
+                <img src="imagenes/proteeina hoch.png" alt="Suplemento 1">
+                <p>Precio: $9,685</p>
+            </a>
+            </div>
+
+
+            <div class="card">
+                <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+                <h4>proteinna star nutritio 3kg (chocolate,Vainilla , Strawberry,Cookies & Cream)</h4>
+                <img src="imagenes/3kstar.png" alt="Suplemento 1">
+                <p>Precio: $31,529</p>
+            </a>
+            </div>
+          
+            <div class="card">
+                <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+                <h4>BODY ADVANCE - Whey Protein 3Kg(chocolate,dulce de leche, frutilla)</h4>
+                <img src="imagenes/body6.jpg" alt="Suplemento 1">
+                <p>Precio: $17,880</p>
+            </a>
+            </div>
+            <div class="card">
+                <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+                <h4>HOCH SPORT Whey Protein 3Kg(chocolate,frutos rojos,mango citric,vainilla)</h4>
+                <img src="imagenes/hosh.jpg"alt="Suplemento 1">
+                <p>Precio:$26,561</p>
+            </a>
+            </div>
+
+
+            
+          
+            <!-- Las otras cards de creatina -->
+        </div>
+        <div class="category-title">
+            <h3>Creatina</h3>
+        </div>
+       
+            <div class="category-container">
+                <div class="card">
+                    <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+                    <h4>Creatina Monohidrato 300G</h4>
+                    <img src="imagenes/crea star.png" alt="Suplemento 1">
+                    <p>Precio:$16,256</p>
+                </a>
+                </div>
+    
+                <div class="card">
+                    <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+                    <h4>Creatina Monohidrato 150Gr - BODY ADVANCE</h4>
+                    <img src="imagenes/crea bdoy.jpg" alt="Suplemento 1">
+                    <p>Precio: $8,619</p>
+                </a>
+                </div>
+    
+                <div class="card">
+                    <a href="URL_DEL_SITIO_AL_QUE_DESEA_REDIRECCIONAR" target="_blank" rel="noopener noreferrer">
+                    <h4>Creatina Micronizada 300G (sin sabor,fruti pnuch)</h4>
+                    <img src="imagenes/crea ena.jpg" alt="Suplemento 1">
+                    <p>Precio: $15,819</p>
+                </a>
+                </div>
+    
+                
+                <div class="card">
+                    <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+                    <h4>Creatine 300G Mervick</h4>
+                    <img src="imagenes/creatina mervi.pmg.jpg" alt="Suplemento 1">
+                    <p>Precio: $14,386</p>
+                </a>
+                </div>
+    
+                <div class="card">
+                    <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+                    <h4>GENTECH Creatina Monohidrato x 250g DOYPACK</h4>
+                    <img src="imagenes/gentech craeatian.png" alt="Suplemento 1">
+                    <p>Precio: $11,035</p>
+                </a>
+                </div>
+
+                <div class="card">
+                    <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+                    <h4>Creatina Creapure x 150g</h4>
+                    <img src="imagenes/crea150star.png" alt="Suplemento 1">
+                    <p>Precio:$12,132</p>
+                </a>
+                </div>
+
+              <!--   <div class="card">
+                    <a href="URL_DEL_SITIO_AL_QUE_DESEA_REDIRECCIONAR" target="_blank" rel="noopener noreferrer">
+                    <h4>proteinna star nutritio 2lb (chocolate)</h4>
+                    <img src="imagenes/crea bdoy.jpg" alt="Suplemento 1">
+                    <p>Precio: $12.000</p>
+                </a>
+                </div> -->
+
+          
+            <!-- Las otras cards de prework -->
+        </div>
+        <div class="category-title">
+            <h3>Pre-entreno</h3>
+        </div>
+        <div class="category-container">
+            <div class="card">
+                <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+                <h4>Pre War (Pre Entreno) 400G (Lemonade)</h4>
+                <img src="imagenes/preworrk ena.jpg" alt="Suplemento 1">
+                <p>Precio: $8,848.07</p>
+            </a>
+            </div>
+
+            <div class="card">
+                <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+                <h4>Pump 3D Ripped 315G (lemonade,Strawberry Lime)</h4>
+                <img src="imagenes/preworkstart.jpg" alt="Suplemento 1">
+                <p>$10,524.31</p>
+            </a>
+            </div>
+
+            <div class="card">
+                <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+                <h4>Beast Blood 280Gr (Tutti Frutti, Uva)</h4>
+                <img src="imagenes/preworrkbody.jpg" alt="Suplemento 1">
+                <p>Precio: $6,816.18</p>
+            </a>
+            </div>
+
+            <div class="card">
+                <a href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+                <h4>Pre Workout Energy 907 g</h4>
+                <img src="imagenes/preworrkmervi.jpg" alt="Suplemento 1">
+                <p>Precio: $13,266.24</p>
+            </a>
+            </div>
+
+           <!--   <div class="card">
+                <a href="URL_DEL_SITIO_AL_QUE_DESEA_REDIRECCIONAR" target="_blank" rel="noopener noreferrer">
+                <h4>proteinna star nutritio 2lb (chocolate)</h4>
+                <img src="imagenes/cfor.jpg" alt="Suplemento 1">
+                <p>Precio: $12.000</p>-->
+            </a>
+            </div>
+
+            <!-- Las otras cards de pre-entreno -->
+        </div>
+    </div>
+    <a class="contacto" href="https://wa.link/0m25jh" target="_blank" rel="noopener noreferrer">
+    <div class="footer">
+        <input type="button" style="background-color: #ffffff; color: #ad0101; border-radius: 5px; margin-top: 2px; height: 24px;">Contactanos aqui </input>
+           
+       
+
+       
+    </div> </a>
+    <a class="contacto" href="https://wa.link/75sfh6" target="_blank" rel="noopener noreferrer">
+        <div class="footer">
+            <input type="button" style="background-color: #ffffff; color: #ad0101; border-radius: 5px; margin-top: 2px; height: 24px;">Contactanos aqui </input>
+           
+    
+           
+        </div> </a>
+</body>
+</html>
